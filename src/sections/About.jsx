@@ -41,7 +41,7 @@ export default function About() {
           <div className="absolute -inset-3.5 -rotate-3 rounded-card border border-accent/40" />
           <div className="relative aspect-[4/5] overflow-hidden rounded-card bg-surface shadow-raised">
             <img
-              src="https://farhanakmals.github.io/image/farhan.jpg"
+              src="/image/farhan.jpg"
               alt="Farhan Akmal Shaleh"
               className="size-full object-cover mix-blend-lighten"
             />
