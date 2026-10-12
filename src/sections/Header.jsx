@@ -7,7 +7,7 @@ export default function Header() {
       <nav className="mx-auto flex max-w-[1240px] flex-wrap items-center gap-[22px] px-8 py-3.5">
         <a href="#top" className="mr-auto flex items-center gap-2 text-base font-medium text-text no-underline hover:text-accent">
           <span className="size-2 rounded-[2px] bg-accent shadow-[0_0_12px_var(--color-accent)]" />
-          farhan.dev
+          Farhan Akmal S
         </a>
         {navLinks.map(id => (
           <a key={id} href={`#${id}`} className="text-[13px] text-neutral-400 no-underline hover:text-accent">
