@@ -1,11 +1,11 @@
-import { skillGroups, skillLevels } from '../data/portfolio';
+import { skillGroups, skillLevel } from '../data/portfolio';
 import { Reveal, Section, SectionHeading } from '../components/ui';
 
 const legend = (
-  <div className="flex gap-4 text-[11px] text-neutral-500">
-    <span>▮▮▯▯ Intermediate</span>
-    <span>▮▮▮▯ Advanced</span>
-    <span>▮▮▮▮ Expert</span>
+  <div className="flex flex-wrap gap-4 text-[11px] text-neutral-500">
+    <span>&lt;75 Intermediate</span>
+    <span>75–89 Advanced</span>
+    <span>90+ Expert</span>
   </div>
 );
 
@@ -17,19 +17,24 @@ export default function Skills() {
         {skillGroups.map(g => (
           <Reveal key={g.title} className="flex flex-col gap-1">
             <div className="mb-2.5 text-xs uppercase tracking-[0.08em] text-neutral-500">{g.title}</div>
-            {g.items.map(([name, level]) => (
+            {g.items.map(([name, score]) => (
               <div key={name} className="row-rule-left flex flex-col gap-2 py-3">
-                <div className="flex justify-between gap-2.5 text-sm">
+                <div className="flex items-baseline justify-between gap-2.5 text-sm">
                   <span>{name}</span>
-                  <span className="text-xs text-accent-300">{level}</span>
+                  <span className="flex flex-none items-baseline gap-2">
+                    <span className="text-[11px] text-neutral-500">{skillLevel(score)}</span>
+                    <span className="text-sm font-medium tabular-nums text-accent-300">{score}%</span>
+                  </span>
                 </div>
-                <div className="grid grid-cols-4 gap-1">
-                  {[0, 1, 2, 3].map(i => (
-                    <span
-                      key={i}
-                      className={`h-[3px] rounded-[2px] ${i < skillLevels[level] ? 'bg-accent' : 'bg-neutral-800'}`}
-                    />
-                  ))}
+                <div
+                  className="h-[3px] overflow-hidden rounded-[2px] bg-neutral-800"
+                  role="meter"
+                  aria-label={name}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                  aria-valuenow={score}
+                >
+                  <div className="h-full rounded-[2px] bg-accent" style={{ width: `${score}%` }} />
                 </div>
               </div>
             ))}

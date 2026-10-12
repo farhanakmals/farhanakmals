@@ -15,7 +15,7 @@ export default function Experience() {
             const active = i === current;
             return (
               <button
-                key={e.company}
+                key={`${e.company}-${e.period}`}
                 type="button"
                 role="tab"
                 aria-selected={active}
@@ -45,7 +45,10 @@ export default function Experience() {
           <div className="flex flex-wrap items-baseline justify-between gap-2.5">
             <div className="flex flex-col gap-1">
               <h3 className="m-0 text-[26px] tracking-[-0.02em]">{exp.role}</h3>
-              <div className="text-[15px] text-accent-400">{exp.company}</div>
+              <div className="text-[15px] text-accent-400">
+                {exp.company}
+                {exp.type && <span className="text-neutral-500"> · {exp.type}</span>}
+              </div>
             </div>
             <div className="text-xs tracking-[0.04em] text-neutral-400">{exp.period}</div>
           </div>
